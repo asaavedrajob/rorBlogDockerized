@@ -1,0 +1,26 @@
+# docker-compose.yml
+
+version: "3.8"
+
+x-base: &base
+  build:
+    context: .
+    dockerfile: Dockerfile.dev
+  stdin_open: true
+  tty: true
+
+services:
+  app:
+    <<: *base
+    command: bin/dev
+    volumes:
+      - .:/app:cached
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres/template_development
+      RUBY_YJIT_ENABLE: 1
+      REDIS_URL: ${REDIS_URL}

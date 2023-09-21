@@ -1,0 +1,8 @@
+# .dockerignore
+# This file should contain all folders/files to be excluded from the Docker Image
+
+.git/*
+log/*
+tmp/*
+storage/*
+Dockerfile.dev
