@@ -1,6 +1,6 @@
 # Dockerfile.dev
 
-FROM ruby:3.2.2
+FROM ruby:3.1.2
 
 ENV RAILS_ENV=development
 
@@ -18,7 +18,7 @@ WORKDIR /app
 COPY Gemfile* ./
 RUN bundle install -j $(nproc)
 
-COPY package.json yarn.lock ./
-RUN yarn install --ignore-scripts
+# COPY package.json yarn.lock ./
+# RUN yarn install --ignore-scripts
 
 CMD ["rails", "server", "-b", "0.0.0.0"]
