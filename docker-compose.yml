@@ -1,11 +1,14 @@
 # docker-compose.yml
 
 version: "3.8"
+include:
+  - .docker/postgres.yml
+  - .docker/redis.yml
 
 x-base: &base
   build:
     context: .
-    dockerfile: Dockerfile.dev
+    dockerfile: .docker/Dockerfile.dev
   stdin_open: true
   tty: true
 
