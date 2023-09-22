@@ -16,6 +16,7 @@ services:
   app:
     <<: *base
     # command: bin/dev
+    restart: on-failure
     volumes:
       - .:/app:cached
     ports:
